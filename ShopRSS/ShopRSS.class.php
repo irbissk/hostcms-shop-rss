@@ -5,8 +5,8 @@
  * @author Medvedev Sergey <irbissk@gmail.com>
  * @copyright Copyright (c) 2011, Medvedev Sergey
  * @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License, version 3
- * @since 15.01.2011
- * @version 1.0
+ * @since 01.05.2012
+ * @version 1.1
  */
 class ShopRSS {
 	
@@ -75,6 +75,15 @@ class ShopRSS {
 			$param['lib_property_default_value'] = 15;
 			$param['lib_property_order'] = 20;
 			$lib->InsertLibProperty($param);
+
+            $param = array();
+            $param['lib_id'] = $lib_id;
+            $param['lib_property_name'] = 'Группа интернет-магазина, -1 для выбора товаров из всех групп, 0 для выбора из корневой группы';
+            $param['lib_property_varible_name'] = 'group_id';
+            $param['lib_property_type'] = 0;
+            $param['lib_property_default_value'] = '-1';
+            $param['lib_property_order'] = 25;
+            $lib->InsertLibProperty($param);
 			
 			$param = array();
 			$param['lib_id'] = $lib_id;
@@ -144,11 +153,12 @@ class ShopRSS {
 	/**
 	 * Генерация RSS ленты
 	 * @param int $shop_id идентификатор интернет магазина
+     * @param int $group_id идентификатор группы интернет магазина
 	 * @param int $items_on_page количество товаров в ленте
 	 * @param array $property дополнительные параметры
 	 * @return string сформированная RSS лента
 	 */
-	function ShowRSS($shop_id,$items_on_page,$property) 
+	function ShowRSS($shop_id, $group_id, $items_on_page,$property)
 	{
 		$shop = & singleton('shop');
 		$RssWrite = & singleton('RssWrite');
@@ -158,6 +168,10 @@ class ShopRSS {
 		$shop_id = to_int($shop_id);
 		$items_on_page = to_int($items_on_page);
 		$property = to_array($property);
+        $group_id = to_int($group_id);
+        if($group_id < 0) {
+            $group_id = false;
+        }
 		if($items_on_page <= 0 or $items_on_page > 100) $items_on_page = 15;
 		
 		if(!$shop_info = $shop->GetShop($shop_id)) return 'Shop not found';
@@ -187,7 +201,7 @@ class ShopRSS {
 		$param['items_on_page'] = $items_on_page;
 		$param['items_field_order'] = 'shop_items_catalog_date_time';
 		$param['items_order'] = 'Desc';
-		$rows = $shop->GetAllItems($shop_id, false, $param);
+		$rows = $shop->GetAllItems($shop_id, $group_id, $param);
 		
 		$items = array();
 		if($rows) {

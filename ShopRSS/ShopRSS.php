@@ -5,8 +5,8 @@
  * @author Medvedev Sergey <irbissk@gmail.com>
  * @copyright Copyright (c) 2011, Medvedev Sergey
  * @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License, version 3
- * @since 15.01.2011
- * @version 1.0
+ * @since 01.05.2012
+ * @version 1.1
  */
 /* Путь к модулю */
 $module_path_name = 'ShopRSS';
@@ -18,4 +18,4 @@ $kernel = & singleton('kernel');
 /* Список файлов для загрузки */
 $kernel->AddModuleFile($module_path_name, CMS_FOLDER . "modules/{$module_path_name}/{$module_path_name}.class.php");
 // Добавляем версию модуля
-$kernel->add_modules_version($module_path_name, '1.0', '15.01.2011');
+$kernel->add_modules_version($module_path_name, '1.1', '01.05.2012');
