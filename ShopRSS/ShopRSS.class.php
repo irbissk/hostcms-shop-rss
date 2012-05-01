@@ -82,7 +82,7 @@ class ShopRSS {
             $param['lib_property_varible_name'] = 'group_id';
             $param['lib_property_type'] = 0;
             $param['lib_property_default_value'] = '-1';
-            $param['lib_property_order'] = 25;
+            $param['lib_property_order'] = 30;
             $lib->InsertLibProperty($param);
 			
 			$param = array();
@@ -91,7 +91,7 @@ class ShopRSS {
 			$param['lib_property_varible_name'] = 'rss_title';
 			$param['lib_property_type'] = 0;
 			$param['lib_property_default_value'] = '';
-			$param['lib_property_order'] = 30;
+			$param['lib_property_order'] = 40;
 			$lib->InsertLibProperty($param);
 			
 			$param = array();
@@ -100,7 +100,7 @@ class ShopRSS {
 			$param['lib_property_varible_name'] = 'rss_description';
 			$param['lib_property_type'] = 0;
 			$param['lib_property_default_value'] = '';
-			$param['lib_property_order'] = 40;
+			$param['lib_property_order'] = 50;
 			$lib->InsertLibProperty($param);
 			
 			$param = array();
@@ -109,7 +109,7 @@ class ShopRSS {
 			$param['lib_property_varible_name'] = 'strip_tags';
 			$param['lib_property_type'] = 1;
 			$param['lib_property_default_value'] = 1;
-			$param['lib_property_order'] = 50;
+			$param['lib_property_order'] = 60;
 			$lib->InsertLibProperty($param);
 			
 			$param = array();
@@ -118,7 +118,7 @@ class ShopRSS {
 			$param['lib_property_varible_name'] = 'show_images';
 			$param['lib_property_type'] = 1;
 			$param['lib_property_default_value'] = 1;
-			$param['lib_property_order'] = 60;
+			$param['lib_property_order'] = 70;
 			$lib->InsertLibProperty($param);
 			
 			$param = array();
@@ -127,7 +127,7 @@ class ShopRSS {
 			$param['lib_property_varible_name'] = 'image_to_item';
 			$param['lib_property_type'] = 1;
 			$param['lib_property_default_value'] = 1;
-			$param['lib_property_order'] = 70;
+			$param['lib_property_order'] = 80;
 			$lib->InsertLibProperty($param);
 		} else {
 			show_error_message('Не удается добавить типовую динамическую страницу! Проверьте права доступа на файлы модуля и переустановите его.');
